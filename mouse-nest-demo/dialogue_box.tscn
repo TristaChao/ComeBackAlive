@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh8nff5lqgmq5"]
+
+[ext_resource type="Script" uid="uid://cllsyy0xaw3ql" path="res://scripts/dialogue_box.gd" id="1_senjy"]
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_senjy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 113.0
+offset_bottom = 23.0
+text = "要聊聊什麼嗎？"
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 65.0
+offset_bottom = 77.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "聊聊料理"
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "聊聊家裡"
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "聊聊外面"

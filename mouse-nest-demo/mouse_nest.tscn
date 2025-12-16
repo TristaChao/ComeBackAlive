@@ -1,0 +1,328 @@
+[gd_scene load_steps=16 format=3 uid="uid://c5htt0ecwvy64"]
+
+[ext_resource type="Script" uid="uid://cm5ekvsndxtom" path="res://scripts/Player.gd" id="1_qv1lf"]
+[ext_resource type="Texture2D" uid="uid://qjn2dskvious" path="res://images/idle.png" id="2_0f15v"]
+[ext_resource type="Texture2D" uid="uid://dww110i3fq2dt" path="res://images/tilesets/floors/wooden.png" id="3_knx4t"]
+[ext_resource type="Texture2D" uid="uid://cg0fa6g7ghgxi" path="res://images/maps/4 Walls, Floor & Doors.png" id="4_ofkjh"]
+[ext_resource type="Texture2D" uid="uid://b32q63gb220xm" path="res://images/maps/4 BigSet.png" id="5_u8f0e"]
+[ext_resource type="PackedScene" uid="uid://bi4uc5ex8nxs6" path="res://mouse_mom.tscn" id="6_knx4t"]
+[ext_resource type="PackedScene" uid="uid://dh8nff5lqgmq5" path="res://dialogue_box.tscn" id="7_ofkjh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f15v"]
+texture = ExtResource("3_knx4t")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_knx4t"]
+texture = ExtResource("4_ofkjh")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ofkjh"]
+texture = ExtResource("5_u8f0e")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+5:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u8f0e"]
+sources/0 = SubResource("TileSetAtlasSource_0f15v")
+sources/1 = SubResource("TileSetAtlasSource_knx4t")
+sources/3 = SubResource("TileSetAtlasSource_ofkjh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f15v"]
+size = Vector2(14.5, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofkjh"]
+size = Vector2(96, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knx4t"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_knx4t"]
+radius = 11.045361
+
+[node name="MouseNest" type="Node2D"]
+z_index = 1
+position = Vector2(528, 346)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_u8f0e")
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 65537, 1, -65535, 65537, 1, -65534, 65537, 1, 2, 65537, 1, 0, 65537, 1, -65536, 65537, 1, -131072, 65537, 1, -131071, 65537, 1, -131070, 65537, 1, -196607, 65537, 0, -196606, 65537, 0, -131069, 131073, 1, -65533, 131073, 1, -65537, 65539, 19, -1, 65539, 19, 65535, 65539, 19, 131071, 65539, 19, 65536, 65539, 19, 65537, 65539, 19, 65538, 65539, 19, 3, 131075, 19, 65539, 131075, 19, 131075, 131075, 20, 131074, 65539, 20, 131072, 65539, 20, 131073, 65539, 20, 196607, 65539, 20, 196606, 3, 20, 131070, 3, 19, 65534, 3, 19, -2, 3, 19, -65538, 3, 19, -131074, 3, 18, -131073, 65539, 18, -196608, 131075, 22, -196605, 131073, 0)
+
+[node name="wall" type="StaticBody2D" parent="TileMap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/wall"]
+position = Vector2(-23.75, -3)
+shape = SubResource("RectangleShape2D_0f15v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap/wall"]
+position = Vector2(56, -4)
+shape = SubResource("RectangleShape2D_0f15v")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMap/wall"]
+position = Vector2(16, 40.5)
+shape = SubResource("RectangleShape2D_ofkjh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMap/wall"]
+position = Vector2(16, -40)
+shape = SubResource("RectangleShape2D_ofkjh")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="World"]
+position = Vector2(29, -1)
+script = ExtResource("1_qv1lf")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Player"]
+texture = ExtResource("2_0f15v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player"]
+shape = SubResource("RectangleShape2D_knx4t")
+
+[node name="InteractionArea" type="Area2D" parent="World/Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player/InteractionArea"]
+shape = SubResource("CircleShape2D_knx4t")
+
+[node name="MouseMom" parent="World" instance=ExtResource("6_knx4t")]
+position = Vector2(-9, -24)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="UI" instance=ExtResource("7_ofkjh")]
+visible = false
