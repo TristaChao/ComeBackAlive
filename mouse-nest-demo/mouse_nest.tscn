@@ -303,7 +303,7 @@ shape = SubResource("RectangleShape2D_ofkjh")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="World"]
+[node name="Player" type="CharacterBody2D" parent="World" groups=["player"]]
 position = Vector2(29, -1)
 script = ExtResource("1_qv1lf")
 metadata/_edit_group_ = true

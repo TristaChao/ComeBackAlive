@@ -15,7 +15,7 @@ texture = ExtResource("1_eg1n1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tbw74")
 
-[node name="Label" type="Label" parent="."]
+[node name="TalkHint" type="Label" parent="."]
 offset_left = -40.0
 offset_top = -27.0
 offset_right = 33.0
