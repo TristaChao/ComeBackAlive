@@ -6,6 +6,9 @@ var player_in_area: Player = null
 func _ready():
 	hint_label.visible = false
 
+func can_interact() -> bool:
+	return true
+
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_area = body

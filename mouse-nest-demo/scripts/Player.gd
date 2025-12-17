@@ -26,7 +26,7 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		for area in $InteractionArea.get_overlapping_areas():
 			if area.has_method("can_interact") and area.can_interact():
-				area.interact()
+				area.interact(self)
 				return
 
 # --- Item Interaction Functions ---
