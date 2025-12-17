@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ytfkgxkymbap"]
+
+[ext_resource type="Script" uid="uid://boebn6npfpwmc" path="res://scripts/Warehouse.gd" id="1_25wl0"]
+[ext_resource type="Texture2D" uid="uid://t66uvcef5qh7" path="res://images/assets/tiles/tile_199.png" id="1_vudxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25wl0"]
+
+[node name="Warehouse" type="Area2D"]
+script = ExtResource("1_25wl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vudxo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_25wl0")
+
+[node name="HintLabel" type="Label" parent="."]
+visible = false
+offset_left = -41.0
+offset_top = -30.0
+offset_right = 47.0
+offset_bottom = -7.0
+text = "(E) 開啟倉庫"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
