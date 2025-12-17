@@ -52,11 +52,15 @@ func _input(event):
 				print("頰囊已滿！")
 			return # Stop further processing to prevent UI from opening
 
-		# --- Toggle Pouch UI ---
+		# --- Toggle Pouch UI with 'X' ---
 		if GameState.state == GameState.State.POUCH_OPEN:
-			pouch_screen.close_pouch()
+			# If pouch is open, X no longer closes it. Escape will.
+			pass 
 		elif GameState.state == GameState.State.FREE_MOVE:
 			pouch_screen.open_pouch()
+	elif event.is_action_pressed("ui_cancel"): # Use Escape key (ui_cancel) to close pouch
+		if GameState.state == GameState.State.POUCH_OPEN:
+			pouch_screen.close_pouch()
 		
 # --- Item Interaction Functions ---
 
