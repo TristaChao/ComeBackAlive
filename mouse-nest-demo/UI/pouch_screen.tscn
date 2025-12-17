@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyr2hallhto3c"]
+[gd_scene load_steps=3 format=3 uid="uid://dyr2hallhto3c"]
+
+[ext_resource type="PackedScene" uid="uid://c1r7u7l72orof" path="res://UI/PouchSlot.tscn" id="1_x3dkv"]
 
 [sub_resource type="GDScript" id="GDScript_m57lt"]
 script/source = "#class_name PouchScreen
@@ -48,27 +50,17 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 5
 
-[node name="Slot" type="TextureRect" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="PouchSlot" parent="Panel/GridContainer" instance=ExtResource("1_x3dkv")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="Slot2" type="TextureRect" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="PouchSlot2" parent="Panel/GridContainer" instance=ExtResource("1_x3dkv")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="Slot3" type="TextureRect" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="PouchSlot3" parent="Panel/GridContainer" instance=ExtResource("1_x3dkv")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="Slot4" type="TextureRect" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="PouchSlot4" parent="Panel/GridContainer" instance=ExtResource("1_x3dkv")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="Slot5" type="TextureRect" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="PouchSlot5" parent="Panel/GridContainer" instance=ExtResource("1_x3dkv")]
 layout_mode = 2
-stretch_mode = 5
