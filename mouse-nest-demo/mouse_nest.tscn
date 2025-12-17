@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5htt0ecwvy64"]
+[gd_scene load_steps=20 format=3 uid="uid://c5htt0ecwvy64"]
 
 [ext_resource type="Script" uid="uid://cm5ekvsndxtom" path="res://scripts/Player.gd" id="1_qv1lf"]
 [ext_resource type="Texture2D" uid="uid://qjn2dskvious" path="res://images/idle.png" id="2_0f15v"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dh8nff5lqgmq5" path="res://dialogue_box.tscn" id="7_ofkjh"]
 [ext_resource type="Script" uid="uid://brli2un8f6ngn" path="res://scripts/Counter.gd" id="7_u8f0e"]
 [ext_resource type="Texture2D" uid="uid://bar7uoag4p508" path="res://images/assets/tiles/tile_191.png" id="8_6v5ol"]
+[ext_resource type="PackedScene" uid="uid://bmoh0biwxp0mp" path="res://grill.tscn" id="9_rrx0g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f15v"]
 texture = ExtResource("3_knx4t")
@@ -308,9 +309,8 @@ shape = SubResource("RectangleShape2D_ofkjh")
 [node name="World" type="Node2D" parent="."]
 
 [node name="Player" type="CharacterBody2D" parent="World" groups=["player"]]
-position = Vector2(29, -1)
+position = Vector2(16, 7)
 script = ExtResource("1_qv1lf")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Player"]
 texture = ExtResource("2_0f15v")
@@ -322,6 +322,9 @@ shape = SubResource("RectangleShape2D_knx4t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player/InteractionArea"]
 shape = SubResource("CircleShape2D_knx4t")
+
+[node name="HeldItemSprite" type="Sprite2D" parent="World/Player"]
+position = Vector2(0, -10)
 
 [node name="MouseMom" parent="World" instance=ExtResource("6_knx4t")]
 position = Vector2(-9, -24)
@@ -343,6 +346,10 @@ offset_top = -30.0
 offset_right = 26.0
 offset_bottom = -7.0
 text = "(E) 櫃台"
+
+[node name="ItemSprite" type="Sprite2D" parent="World/Counter"]
+
+[node name="Grill" parent="World" instance=ExtResource("9_rrx0g")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 

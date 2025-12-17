@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmoh0biwxp0mp"]
+
+[ext_resource type="Texture2D" uid="uid://daxi2uarskq5h" path="res://images/assets/tiles/tile_212.png" id="1_7x6fn"]
+[ext_resource type="Script" uid="uid://xgkysgjsbkcp" path="res://scripts/grill.gd" id="1_udiaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udiaq"]
+
+[node name="Grill" type="Area2D"]
+position = Vector2(40, 25)
+script = ExtResource("1_udiaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_udiaq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7x6fn")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -45.0
+offset_right = 19.0
+offset_bottom = -18.0
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+one_shot = true
+
+[node name="HintLabel" type="Label" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -28.0
+offset_right = 27.0
+offset_bottom = -5.0
+text = "(E)烤台"
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(2, -6)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var held_item_sprite := $HeldItemSprite # Reference to the sprite above the player
 var held_item: ItemData = null
 
-
 @export var speed := 120
+
+func _ready():
+	held_item_sprite.visible = false # Hide the sprite initially
 
 func _physics_process(delta):
 	var dir := Vector2.ZERO
@@ -37,10 +40,22 @@ func has_item() -> bool:
 func pick_item(item: ItemData):
 	if item:
 		held_item = item
+		# Update the held item's visual
+		update_held_item_visual()
 		print("拿起物品: ", item.id, ", 狀態: ", ItemData.CookState.keys()[item.cook_state])
 
 func drop_item() -> ItemData:
 	var item_to_drop = held_item
 	held_item = null
+	# Hide the held item's visual
+	update_held_item_visual()
 	print("放下物品")
 	return item_to_drop
+
+func update_held_item_visual():
+	if held_item != null:
+		# For now, let's use a generic icon. You'll replace this with actual item sprites later.
+		held_item_sprite.texture = held_item.texture # Use a default icon
+		held_item_sprite.visible = true
+	else:
+		held_item_sprite.visible = false
