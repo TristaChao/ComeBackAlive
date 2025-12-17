@@ -40,8 +40,6 @@ func _input(event):
 		move_selection(-1)
 	elif event.is_action_pressed("interact"):
 		confirm_selection()
-	elif event.is_action_pressed("pouch"):
-		close_pouch()
 
 func move_selection(dir: int):
 	if GameState.pouch.is_empty():

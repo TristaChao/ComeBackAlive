@@ -34,27 +34,29 @@ func _input(event):
 			return
 
 		for area in $InteractionArea.get_overlapping_areas():
-			if area.has_method("can_interact") and area.can_interact():
-				area.interact(self)
-				return
+						if area.has_method("can_interact") and area.can_interact():
+							var interact_callable = area.get("interact")
+							if interact_callable.get_argument_count() == 1:
+								interact_callable.call(self)
+							else:
+								interact_callable.call()
+							return
 	elif event.is_action_pressed("pouch"):
-		# --- 情況 1：手上有東西 → 先存進頰囊 ---
+		# If holding an item, prioritize putting it in the pouch without opening the UI.
 		if GameState.state == GameState.State.FREE_MOVE and held_item != null:
 			if GameState.pouch.size() < GameState.POUCH_CAPACITY:
 				GameState.pouch.append(held_item)
 				print("將 ", held_item.id, " 放入頰囊")
-				drop_item() # 清空手上物品（圖示會消失）
+				drop_item() # Clears held_item and updates visual
 			else:
 				print("頰囊已滿！")
-			return  # ⭐ 重點：這裡直接結束，不開 UI
+			return # Stop further processing to prevent UI from opening
 
-
-		# --- 情況 2：手上沒東西 → 切換 UI ---
-		if GameState.state == GameState.State.FREE_MOVE:
-			pouch_screen.open_pouch()
-
-		elif GameState.state == GameState.State.POUCH_OPEN:
+		# --- Toggle Pouch UI ---
+		if GameState.state == GameState.State.POUCH_OPEN:
 			pouch_screen.close_pouch()
+		elif GameState.state == GameState.State.FREE_MOVE:
+			pouch_screen.open_pouch()
 		
 # --- Item Interaction Functions ---
 
