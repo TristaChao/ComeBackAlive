@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5htt0ecwvy64"]
+[gd_scene load_steps=22 format=3 uid="uid://c5htt0ecwvy64"]
 
 [ext_resource type="Script" uid="uid://cm5ekvsndxtom" path="res://scripts/Player.gd" id="1_qv1lf"]
 [ext_resource type="Texture2D" uid="uid://qjn2dskvious" path="res://images/idle.png" id="2_0f15v"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://brli2un8f6ngn" path="res://scripts/Counter.gd" id="7_u8f0e"]
 [ext_resource type="Texture2D" uid="uid://bar7uoag4p508" path="res://images/assets/tiles/tile_191.png" id="8_6v5ol"]
 [ext_resource type="PackedScene" uid="uid://bmoh0biwxp0mp" path="res://grill.tscn" id="9_rrx0g"]
+[ext_resource type="PackedScene" uid="uid://dyr2hallhto3c" path="res://UI/pouch_screen.tscn" id="11_28t7s"]
+[ext_resource type="Script" uid="uid://seo04td62qeg" path="res://scripts/PouchScreen.gd" id="12_bbtb4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f15v"]
 texture = ExtResource("3_knx4t")
@@ -355,6 +357,13 @@ text = "(E) 櫃台"
 
 [node name="DialogueBox" parent="UI" instance=ExtResource("7_ofkjh")]
 visible = false
+
+[node name="PouchScreen" parent="UI" instance=ExtResource("11_28t7s")]
+offset_left = 311.0
+offset_top = 44.0
+offset_right = 351.0
+offset_bottom = 84.0
+script = ExtResource("12_bbtb4")
 
 [connection signal="body_entered" from="World/Counter" to="World/Counter" method="_on_body_entered"]
 [connection signal="body_exited" from="World/Counter" to="World/Counter" method="_on_body_exited"]
