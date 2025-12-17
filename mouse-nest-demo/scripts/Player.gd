@@ -1,4 +1,8 @@
+class_name Player
 extends CharacterBody2D
+
+var held_item: ItemData = null
+
 
 @export var speed := 120
 
@@ -24,3 +28,19 @@ func _input(event):
 			if area.has_method("can_interact") and area.can_interact():
 				area.interact()
 				return
+
+# --- Item Interaction Functions ---
+
+func has_item() -> bool:
+	return held_item != null
+
+func pick_item(item: ItemData):
+	if item:
+		held_item = item
+		print("拿起物品: ", item.id, ", 狀態: ", ItemData.CookState.keys()[item.cook_state])
+
+func drop_item() -> ItemData:
+	var item_to_drop = held_item
+	held_item = null
+	print("放下物品")
+	return item_to_drop

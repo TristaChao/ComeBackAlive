@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5htt0ecwvy64"]
+[gd_scene load_steps=19 format=3 uid="uid://c5htt0ecwvy64"]
 
 [ext_resource type="Script" uid="uid://cm5ekvsndxtom" path="res://scripts/Player.gd" id="1_qv1lf"]
 [ext_resource type="Texture2D" uid="uid://qjn2dskvious" path="res://images/idle.png" id="2_0f15v"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b32q63gb220xm" path="res://images/maps/4 BigSet.png" id="5_u8f0e"]
 [ext_resource type="PackedScene" uid="uid://bi4uc5ex8nxs6" path="res://mouse_mom.tscn" id="6_knx4t"]
 [ext_resource type="PackedScene" uid="uid://dh8nff5lqgmq5" path="res://dialogue_box.tscn" id="7_ofkjh"]
+[ext_resource type="Script" uid="uid://brli2un8f6ngn" path="res://scripts/Counter.gd" id="7_u8f0e"]
+[ext_resource type="Texture2D" uid="uid://bar7uoag4p508" path="res://images/assets/tiles/tile_191.png" id="8_6v5ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f15v"]
 texture = ExtResource("3_knx4t")
@@ -274,6 +276,8 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_knx4t"]
 radius = 11.045361
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8f0e"]
+
 [node name="MouseNest" type="Node2D"]
 z_index = 1
 position = Vector2(528, 346)
@@ -322,7 +326,28 @@ shape = SubResource("CircleShape2D_knx4t")
 [node name="MouseMom" parent="World" instance=ExtResource("6_knx4t")]
 position = Vector2(-9, -24)
 
+[node name="Counter" type="Area2D" parent="World"]
+position = Vector2(-8, 24)
+script = ExtResource("7_u8f0e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Counter"]
+shape = SubResource("RectangleShape2D_u8f0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Counter"]
+texture = ExtResource("8_6v5ol")
+
+[node name="HintLabel" type="Label" parent="World/Counter"]
+visible = false
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 26.0
+offset_bottom = -7.0
+text = "(E) 櫃台"
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" parent="UI" instance=ExtResource("7_ofkjh")]
 visible = false
+
+[connection signal="body_entered" from="World/Counter" to="World/Counter" method="_on_body_entered"]
+[connection signal="body_exited" from="World/Counter" to="World/Counter" method="_on_body_exited"]

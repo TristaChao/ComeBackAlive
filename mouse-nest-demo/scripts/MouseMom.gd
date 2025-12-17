@@ -9,10 +9,7 @@ func _ready():
 
 # 當有物體進入此區域時 (body_entered Signal 連接此函式)
 func _on_body_entered(body):
-	print("一個物體進入了鼠媽的範圍")
-	# 為了更穩定，建議您到 Player 節點的 Inspector -> Node -> Groups，為 Player 新增一個 "player" 群組
 	if body.is_in_group("player"):
-		print("而且這個物體是玩家！")
 		talk_hint.visible = true
 
 # 當有物體離開此區域時 (body_exited Signal 連接此函式)
