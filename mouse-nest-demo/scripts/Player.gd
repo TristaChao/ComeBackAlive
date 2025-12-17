@@ -38,21 +38,22 @@ func _input(event):
 				area.interact(self)
 				return
 	elif event.is_action_pressed("pouch"):
-		if GameState.state == GameState.State.FREE_MOVE:
-			if held_item != null:
-				# Player has an item, try to put it in pouch
-				if GameState.pouch.size() < GameState.POUCH_CAPACITY:
-					GameState.pouch.append(held_item)
-					print("將 ", held_item.id, " 放入頰囊！")
-					drop_item() # Call drop_item to clear held_item and update visual
-					pouch_screen.open_pouch() # Open pouch after putting item in
-				else:
-					print("頰囊已滿！")
+		# --- 情況 1：手上有東西 → 先存進頰囊 ---
+		if GameState.state == GameState.State.FREE_MOVE and held_item != null:
+			if GameState.pouch.size() < GameState.POUCH_CAPACITY:
+				GameState.pouch.append(held_item)
+				print("將 ", held_item.id, " 放入頰囊")
+				drop_item() # 清空手上物品（圖示會消失）
 			else:
-				# Player has no item, open pouch UI
-				pouch_screen.open_pouch() # Open pouch
+				print("頰囊已滿！")
+			return  # ⭐ 重點：這裡直接結束，不開 UI
+
+
+		# --- 情況 2：手上沒東西 → 切換 UI ---
+		if GameState.state == GameState.State.FREE_MOVE:
+			pouch_screen.open_pouch()
+
 		elif GameState.state == GameState.State.POUCH_OPEN:
-			# Pouch is open, close it
 			pouch_screen.close_pouch()
 		
 # --- Item Interaction Functions ---
