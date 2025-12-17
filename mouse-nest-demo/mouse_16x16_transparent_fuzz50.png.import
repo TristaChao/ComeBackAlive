@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://curoib3aifysw"
-path="res://.godot/imported/mouse_16x16_transparent.png-770fa96d127110bac4659c5ffd77b7ea.ctex"
+uid="uid://67mqwx5bxt2q"
+path="res://.godot/imported/mouse_16x16_transparent_fuzz50.png-98fb72c57a1cbcf02b7efa21893e759b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mouse_16x16_transparent.png"
-dest_files=["res://.godot/imported/mouse_16x16_transparent.png-770fa96d127110bac4659c5ffd77b7ea.ctex"]
+source_file="res://mouse_16x16_transparent_fuzz50.png"
+dest_files=["res://.godot/imported/mouse_16x16_transparent_fuzz50.png-98fb72c57a1cbcf02b7efa21893e759b.ctex"]
 
 [params]
 
