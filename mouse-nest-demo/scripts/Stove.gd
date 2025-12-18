@@ -11,7 +11,12 @@ class_name Stove
 var item_in_pot: ItemData = null
 var player_in_area: Player = null
 var is_cooking: bool = false
-var active_recipe_result: String = "" # Stores the ID of the item that will be produced
+var active_recipe_result: String = ""
+
+# --- Configuration ---
+# A list of semi-finished items that can be placed back into an empty pot.
+const PLACEABLE_SEMI_FINISHED = ["onion_soup", "mushroom_sauce", "tomato_sauce"]
+
 
 func _ready() -> void:
 	hint_label.hide()
@@ -31,18 +36,16 @@ func interact(player: Player) -> void:
 	if not can_interact():
 		return
 
-	# Case 0 (NEW): Pot is empty, player is empty-handed. -> Give water to player (DEV CHEAT)
+	# Case 0 (DEV CHEAT): Pot is empty, player is empty-handed. -> Give water to player.
 	if item_in_pot == null and not player.has_item():
 		var water_item = ItemDatabase.create_item("water")
 		if water_item:
 			player.pick_item(water_item)
-			print("DEV CHEAT: Gave 'water' to player.")
 		update_hint_text()
 		return
 
-	# Case 1: Pot has a finished item, player is empty-handed. -> Player takes finished item.
+	# Case 1: Pot has a finished item, player is empty-handed. -> Player takes item.
 	if item_in_pot != null and not player.has_item():
-		# Only allow taking finished sauces/soups, not just water
 		if item_in_pot.id != "water":
 			player.pick_item(item_in_pot)
 			item_in_pot = null
@@ -54,31 +57,30 @@ func interact(player: Player) -> void:
 	if player.has_item():
 		var held_item_id = player.held_item.id
 		
-		# Sub-case 2.1: Pot is empty, player is holding water. -> Place water in pot.
-		if item_in_pot == null and held_item_id == "water":
-			item_in_pot = player.drop_item()
-			item_sprite.texture = item_in_pot.texture
-			item_sprite.show()
-			update_hint_text()
-			return
+		# Sub-case 2.1: Pot is empty, player is holding water or a valid semi-finished product.
+		if item_in_pot == null:
+			if held_item_id == "water" or PLACEABLE_SEMI_FINISHED.has(held_item_id):
+				item_in_pot = player.drop_item()
+				item_sprite.texture = item_in_pot.texture
+				item_sprite.show()
+				update_hint_text()
+				return
 			
-		# Sub-case 2.2: Pot has 'water', player adds a valid next ingredient. -> Start cooking.
+		# Sub-case 2.2: Pot has an item, player adds a valid next ingredient to start cooking.
 		if item_in_pot != null:
 			var base_id = item_in_pot.id
 			if ItemDatabase.STOVE_RECIPES.has(base_id) and ItemDatabase.STOVE_RECIPES[base_id].has(held_item_id):
-				# Valid recipe found, consume player's item and start cooking
 				var recipe = ItemDatabase.STOVE_RECIPES[base_id][held_item_id]
-				player.drop_item() # Consume the item from player's hand
+				player.drop_item()
 				start_cooking(recipe)
 				return
 
 func start_cooking(recipe: Dictionary) -> void:
 	is_cooking = true
-	active_recipe_result = recipe.result # Store the target item ID
+	active_recipe_result = recipe.result
 	cook_timer.wait_time = recipe.time
 	cook_timer.start()
 	
-	# Hide the old item, show progress
 	item_sprite.hide()
 	progress_bar.show()
 	update_hint_text()
@@ -90,15 +92,14 @@ func _on_cook_timer_timeout() -> void:
 	if active_recipe_result.is_empty():
 		return
 
-	# Create the new item based on the stored result ID
 	var new_item = ItemDatabase.create_item(active_recipe_result)
 	if new_item:
 		item_in_pot = new_item
 		item_sprite.texture = new_item.texture
-		item_sprite.show() # Show the new item
+		item_sprite.show()
 		print("Stove cooking complete! New item: %s" % new_item.id)
 
-	active_recipe_result = "" # Reset for the next cook
+	active_recipe_result = ""
 	update_hint_text()
 
 # --- Body Enter/Exit for Hint Label ---
@@ -129,10 +130,12 @@ func update_hint_text() -> void:
 		if item_in_pot == null:
 			if held_item_id == "water":
 				text_to_show = "(E) 加水"
+			elif PLACEABLE_SEMI_FINISHED.has(held_item_id):
+				text_to_show = "(E) 放回 " + player_in_area.held_item.display_name
 		else: # Pot has something
 			var base_id = item_in_pot.id
 			if ItemDatabase.STOVE_RECIPES.has(base_id) and ItemDatabase.STOVE_RECIPES[base_id].has(held_item_id):
-				text_to_show = "(E) 加入" + player_in_area.held_item.display_name
+				text_to_show = "(E) 加入 " + player_in_area.held_item.display_name
 	else: # player is empty-handed
 		if item_in_pot == null: # Pot is empty
 			text_to_show = "(E) 取水(測試用)"

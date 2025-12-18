@@ -18,8 +18,8 @@ func _ready() -> void:
 	item_sprite.hide()
 
 func _process(delta: float) -> void:
+	# This function can access the class-level variable 'is_chopping'
 	if is_chopping:
-		# This makes the progress bar go from 0 to 100
 		progress_bar.value = (1.0 - chop_timer.get_time_left() / chop_timer.wait_time) * 100
 
 func can_interact() -> bool:
@@ -40,15 +40,15 @@ func interact(player: Player) -> void:
 		
 	# Case 2: Board is empty, player is holding a choppable item. -> Player places item and starts chopping.
 	elif item_on_board == null and player.has_item():
-		var held_item_id = player.held_item.id
-		# The recipe is now in the central database
-		if ItemDatabase.CHOP_RECIPES.has(held_item_id):
+		var held_item = player.held_item
+		# Check both item ID and its cook_state.
+		if ItemDatabase.CHOP_RECIPES.has(held_item.id) and held_item.cook_state == ItemData.CookState.RAW:
 			item_on_board = player.drop_item()
 			item_sprite.texture = item_on_board.texture
 			item_sprite.show()
 			start_chopping()
 		else:
-			print("This item '%s' cannot be chopped." % held_item_id)
+			print("This item '%s' cannot be chopped in its current state." % held_item.id)
 
 func start_chopping() -> void:
 	is_chopping = true
@@ -64,16 +64,14 @@ func _on_chop_timer_timeout() -> void:
 		return
 
 	var original_id = item_on_board.id
-	# The recipe is now in the central database
 	if ItemDatabase.CHOP_RECIPES.has(original_id):
 		var new_item_id = ItemDatabase.CHOP_RECIPES[original_id]
 		
-		# Create the new item using the central database
 		var chopped_item = ItemDatabase.create_item(new_item_id)
 		
 		if chopped_item:
 			item_on_board = chopped_item
-			item_sprite.texture = chopped_item.texture # This will now be the correct texture
+			item_sprite.texture = chopped_item.texture
 			print("Chopping complete! New item: %s" % new_item_id)
 	
 	update_hint_text()
@@ -97,13 +95,20 @@ func update_hint_text() -> void:
 
 	if is_chopping:
 		hint_label.text = "切菜中..."
-	elif item_on_board == null and player_in_area.has_item():
-		# The recipe is now in the central database
-		if ItemDatabase.CHOP_RECIPES.has(player_in_area.held_item.id):
-			hint_label.text = "(E) 放置"
+		hint_label.show()
+		return
+		
+	var text_to_show = ""
+	if item_on_board == null and player_in_area.has_item():
+		var held_item = player_in_area.held_item
+		if ItemDatabase.CHOP_RECIPES.has(held_item.id) and held_item.cook_state == ItemData.CookState.RAW:
+			text_to_show = "(E) 放置"
 		else:
-			hint_label.text = "(無法切)"
+			text_to_show = "(無法切)"
 	elif item_on_board != null and not player_in_area.has_item():
-		hint_label.text = "(E) 拿取"
+		text_to_show = "(E) 拿取"
 	else:
-		hint_label.text = ""
+		text_to_show = ""
+
+	hint_label.text = text_to_show
+	hint_label.visible = (text_to_show != "")
