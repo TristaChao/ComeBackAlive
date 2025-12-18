@@ -3,88 +3,70 @@ extends Node
 # This is our master item database.
 const DATA = {
 	# --- Ingredients ---
-	"beef": {
-		"display_name": "生牛肉", "texture_path": "res://images/assets/food/16/tile_180.png",
-		"is_edible": false, "course": "食材", "cuisine": "通用"
-	},
-	"tomato": {
-		"display_name": "番茄", "texture_path": "res://images/assets/food/16/tile_180.png", # 範例路徑
-		"is_edible": true, "course": "食材", "cuisine": "通用"
-	},
-	"onion": {
-		"display_name": "洋蔥", "texture_path": "res://images/assets/food/16/tile_179.png", # 範例路徑
-		"is_edible": false, "course": "食材", "cuisine": "通用"
-	},
-	"water": {
-		"display_name": "水", "texture_path": "res://images/assets/food/16/tile_50.png",
-		"is_edible": false, "course": "食材", "cuisine": "通用"
-	},
-	"mushroom": {
-		"display_name": "蘑菇", "texture_path": "res://images/assets/food/16/tile_177.png", # 範例路徑
-		"is_edible": false, "course": "食材", "cuisine": "通用"
-	},
-	"potato": {
-		"display_name": "馬鈴薯", "texture_path": "res://images/assets/food/16/tile_174.png", # 範例路徑
-		"is_edible": false, "course": "食材", "cuisine": "通用"
-	},
+	"beef": { "display_name": "生牛肉", "texture_path": "res://images/items/beef.png", "is_edible": false, "course": "食材" },
+	"tomato": { "display_name": "番茄", "texture_path": "res://images/items/tomato.png", "is_edible": true, "course": "食材" },
+	"onion": { "display_name": "洋蔥", "texture_path": "res://images/items/onion.png", "is_edible": false, "course": "食材" },
+	"water": { "display_name": "水", "texture_path": "res://images/assets/food/16/tile_50.png", "is_edible": false, "course": "食材" },
+	"mushroom": { "display_name": "蘑菇", "texture_path": "res://images/items/mushroom.png", "is_edible": false, "course": "食材" },
+	"potato": { "display_name": "馬鈴薯", "texture_path": "res://images/items/potato.png", "is_edible": false, "course": "食材" },
 	
+	# --- Tools & Containers (as items) ---
+	"plate": { "display_name": "盤子", "texture_path": "res://images/items/plate.png", "is_edible": false, "course": "工具" },
+	"bowl": { "display_name": "碗", "texture_path": "res://...", "is_edible": false, "course": "工具" },
+	"skewer": { "display_name": "竹籤", "texture_path": "res://images/items/skewer.png", "is_edible": false, "course": "工具" },
+
 	# --- Semi-finished Products ---
-	"minced_beef": {
-		"display_name": "絞肉", "texture_path": "res://images/assets/food/16/tile_165.png",
-		"is_edible": false, "course": "半成品", "cuisine": "通用"
-	},
+	"minced_beef": { "display_name": "絞肉", "texture_path": "res://images/items/minced_beef.png", "is_edible": false, "course": "半成品" },
 	"tomato_diced": { "display_name": "番茄丁", "texture_path": "res://...", "is_edible": false, "course": "半成品" },
 	"onion_diced": { "display_name": "洋蔥丁", "texture_path": "res://...", "is_edible": false, "course": "半成品" },
-	"onion_soup": {
-		"display_name": "洋蔥湯", "texture_path": "res://images/assets/food/16/tile_178.png", # 範例路徑
-		"is_edible": false, "course": "半成品", "cuisine": "義式"
-	},
-	"mushroom_sauce": {
-		"display_name": "蘑菇醬汁", "texture_path": "res://images/assets/food/16/tile_176.png", # 範例路徑
-		"is_edible": false, "course": "配料", "cuisine": "義式"
-	},
-	"tomato_sauce": {
-		"display_name": "番茄醬汁", "texture_path": "res://images/assets/food/16/tile_175.png", # 範例路徑
-		"is_edible": false, "course": "配料", "cuisine": "義式"
-	},
-	
-	# --- Cooked & Burnt Food ---
-	"cooked_beef": {
-		"display_name": "烤牛排", "texture_path": "res://images/assets/food/16/tile_181.png", # 範例路徑
-		"is_edible": false, "course": "主餐", "cuisine": "義式"
-	},
-	"burnt_item": {
-		"display_name": "燒焦的東西", "texture_path": "res://images/assets/food/16/tile_182.png", # 範例路徑
-		"is_edible": false, "course": "垃圾", "cuisine": "通用"
-	}
+	"onion_soup": { "display_name": "洋蔥湯", "texture_path": "res://images/items/onion_soup.png", "is_edible": false, "course": "半成品", "cuisine": "義式" },
+	"mushroom_sauce": { "display_name": "蘑菇醬汁", "texture_path": "res://images/items/mushroom_sauce.png", "is_edible": false, "course": "配料", "cuisine": "義式" },
+	"tomato_sauce": { "display_name": "番茄醬汁", "texture_path": "res://images/items/tomato_sauce.png", "is_edible": false, "course": "配料", "cuisine": "義式" },
+	"mushroom_skewer": { "display_name": "蘑菇串", "texture_path": "res://images/items/mushroom_skewer.png", "is_edible": false, "course": "半成品" },
+
+	# --- Cooked & Final Products ---
+	"cooked_beef": { "display_name": "烤牛排", "texture_path": "res://images/items/cooked_beef.png", "is_edible": false, "course": "主餐", "cuisine": "義式" },
+	"plated_cooked_beef": { "display_name": "盤裝烤牛排", "texture_path": "res://...", "is_edible": true, "course": "主餐", "cuisine": "義式" },
+	"plated_mushroom_sauce_steak": { "display_name": "盤裝蘑菇醬汁牛排", "texture_path": "res://...", "is_edible": true, "course": "主餐", "cuisine": "義式" },
+	"plated_tomato_sauce_steak": { "display_name": "盤裝番茄醬汁牛排", "texture_path": "res://...", "is_edible": true, "course": "主餐", "cuisine": "義式" },
+	"burnt_item": { "display_name": "燒焦的東西", "texture_path": "res://images/assets/food/16/tile_182.png", "is_edible": false, "course": "垃圾" }
 }
 
 # ==============================================================================
 # --- RECIPE BOOKS ---
 # ==============================================================================
 
-const CHOP_RECIPES = {
-	"beef": "minced_beef",
-	"tomato": "tomato_diced",
-	"onion": "onion_diced",
-	"potato": "potato_chunks"
-}
+const CHOP_RECIPES = { "beef": "minced_beef", "tomato": "tomato_diced", "onion": "onion_diced", "potato": "potato_chunks" }
 
 const STOVE_RECIPES = {
-	"water": {
-		"onion": { "result": "onion_soup", "time": 5.0 }
-	},
+	"water": { "onion": { "result": "onion_soup", "time": 5.0 } },
 	"onion_soup": {
 		"mushroom": { "result": "mushroom_sauce", "time": 5.0 },
 		"tomato": { "result": "tomato_sauce", "time": 5.0 }
 	}
 }
 
-# Defines what can be grilled and what it turns into.
-const GRILL_RECIPES = {
-	# Input item ID: { "result": Output item ID, "time": float, "burnt_result": Burnt item ID }
-	"beef": { "result": "cooked_beef", "time": 3.0, "burnt_result": "burnt_item" }
+const GRILL_RECIPES = { "beef": { "result": "cooked_beef", "time": 3.0, "burnt_result": "burnt_item" } }
+
+# The RAW combination recipes. You can write keys in any order you want.
+const _RAW_COMBINATION_RECIPES = {
+	"cooked_beef|plate": "plated_cooked_beef",
+	"mushroom|skewer": "mushroom_skewer",
+	"plated_cooked_beef|mushroom_sauce": "plated_mushroom_sauce_steak",
+	"plated_cooked_beef|tomato_sauce": "plated_tomato_sauce_steak"
 }
+
+# This dictionary will be populated at runtime with canonical (sorted) keys.
+var combination_recipes: Dictionary = {}
+
+
+func _ready():
+	# Pre-process the combination recipes to create canonical keys.
+	for raw_key in _RAW_COMBINATION_RECIPES:
+		var ingredients = raw_key.split("|")
+		ingredients.sort()
+		var canonical_key = "|".join(ingredients)
+		combination_recipes[canonical_key] = _RAW_COMBINATION_RECIPES[raw_key]
 
 # ==============================================================================
 # --- HELPER FUNCTIONS ---

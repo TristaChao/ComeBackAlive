@@ -19,17 +19,22 @@ const WAREHOUSE_CAPACITY := 20
 
 func _ready():
 	# --- 臨時測試資料 ---
-	# 我們在倉庫裡放入一些測試用的食材
+	# We are adding all necessary base items for combination testing into the warehouse.
 	
 	if warehouse.is_empty():
-		# Add a raw beef to test grilling
-		var beef_to_test = ItemDatabase.create_item("beef")
-		if beef_to_test:
-			warehouse.append(beef_to_test)
-			
-		# Add a mushroom to test sauce recipe
-		var mushroom_to_test = ItemDatabase.create_item("mushroom")
-		if mushroom_to_test:
-			warehouse.append(mushroom_to_test)
+		var items_to_add = [
+			"cooked_beef",
+			"plate",
+			"skewer",
+			"mushroom",
+			"onion" # Adding onion as well for sauce making
+		]
+		
+		for item_id in items_to_add:
+			var item = ItemDatabase.create_item(item_id)
+			if item:
+				warehouse.append(item)
 
+	# We will remove the temporary settings for the counter later.
+	# For now, it provides an onion, which is fine.
 	# --- 臨時測試資料結束 ---

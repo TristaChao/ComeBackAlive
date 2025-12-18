@@ -133,9 +133,21 @@ func update_hint_text() -> void:
 			elif PLACEABLE_SEMI_FINISHED.has(held_item_id):
 				text_to_show = "(E) 放回 " + player_in_area.held_item.display_name
 		else: # Pot has something
+			print("--- DEBUG START ---")
+			print("Player is holding: ", held_item_id)
 			var base_id = item_in_pot.id
-			if ItemDatabase.STOVE_RECIPES.has(base_id) and ItemDatabase.STOVE_RECIPES[base_id].has(held_item_id):
-				text_to_show = "(E) 加入 " + player_in_area.held_item.display_name
+			print("Item in pot: ", base_id)
+			
+			var has_base_recipe = ItemDatabase.STOVE_RECIPES.has(base_id)
+			print("Recipe book has base '%s'? " % base_id, has_base_recipe)
+
+			if has_base_recipe:
+				var has_full_recipe = ItemDatabase.STOVE_RECIPES[base_id].has(held_item_id)
+				print("Base recipe has ingredient '%s'? " % held_item_id, has_full_recipe)
+				if has_full_recipe:
+					text_to_show = "(E) 加入 " + player_in_area.held_item.display_name
+			
+			print("--- DEBUG END ---")
 	else: # player is empty-handed
 		if item_in_pot == null: # Pot is empty
 			text_to_show = "(E) 取水(測試用)"
