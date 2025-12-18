@@ -10,11 +10,8 @@ func _ready():
 	item_sprite.visible = false # Hide item sprite initially
 	
 	# Start with one piece of raw beef on the counter.
-	var initial_beef := ItemData.new()
-	initial_beef.id = "beef"
-	initial_beef.cook_state = ItemData.CookState.RAW
-	initial_beef.texture = load("res://images/assets/food/16/tile_180.png") # Assign the texture here
-	item_on_counter = initial_beef
+	var initial_item_id = "beef"
+	item_on_counter = ItemDatabase.create_item(initial_item_id)
 	update_item_visual() # Show the initial beef
 
 func can_interact() -> bool:

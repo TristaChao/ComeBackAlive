@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5htt0ecwvy64"]
+[gd_scene load_steps=23 format=3 uid="uid://c5htt0ecwvy64"]
 
 [ext_resource type="Script" uid="uid://cm5ekvsndxtom" path="res://scripts/Player.gd" id="1_qv1lf"]
 [ext_resource type="Texture2D" uid="uid://qjn2dskvious" path="res://images/idle.png" id="2_0f15v"]
@@ -7,11 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b32q63gb220xm" path="res://images/maps/4 BigSet.png" id="5_u8f0e"]
 [ext_resource type="PackedScene" uid="uid://bi4uc5ex8nxs6" path="res://mouse_mom.tscn" id="6_knx4t"]
 [ext_resource type="PackedScene" uid="uid://dh8nff5lqgmq5" path="res://dialogue_box.tscn" id="7_ofkjh"]
-[ext_resource type="Script" uid="uid://brli2un8f6ngn" path="res://scripts/Counter.gd" id="7_u8f0e"]
-[ext_resource type="Texture2D" uid="uid://bar7uoag4p508" path="res://images/assets/tiles/tile_191.png" id="8_6v5ol"]
 [ext_resource type="PackedScene" uid="uid://bmoh0biwxp0mp" path="res://grill.tscn" id="9_rrx0g"]
 [ext_resource type="PackedScene" uid="uid://ytfkgxkymbap" path="res://Warehouse.tscn" id="10_ereok"]
 [ext_resource type="PackedScene" uid="uid://dyr2hallhto3c" path="res://UI/pouch_screen.tscn" id="11_28t7s"]
+[ext_resource type="PackedScene" uid="uid://b4imn608axt4e" path="res://ChoppingBoard.tscn" id="11_jnw8d"]
+[ext_resource type="PackedScene" uid="uid://cgfumgrh8oxla" path="res://Counter.tscn" id="11_qyisx"]
 [ext_resource type="Script" uid="uid://seo04td62qeg" path="res://scripts/PouchScreen.gd" id="12_bbtb4"]
 [ext_resource type="PackedScene" uid="uid://diqg4gcr1w0pw" path="res://UI/WarehouseScreen.tscn" id="14_jnw8d"]
 
@@ -281,8 +281,6 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_knx4t"]
 radius = 11.045361
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8f0e"]
-
 [node name="MouseNest" type="Node2D"]
 z_index = 1
 position = Vector2(528, 346)
@@ -313,7 +311,7 @@ shape = SubResource("RectangleShape2D_ofkjh")
 [node name="World" type="Node2D" parent="."]
 
 [node name="Player" type="CharacterBody2D" parent="World" groups=["player"]]
-position = Vector2(16, 7)
+position = Vector2(13, 6)
 script = ExtResource("1_qv1lf")
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Player"]
@@ -323,6 +321,7 @@ texture = ExtResource("2_0f15v")
 shape = SubResource("RectangleShape2D_knx4t")
 
 [node name="InteractionArea" type="Area2D" parent="World/Player"]
+scale = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player/InteractionArea"]
 shape = SubResource("CircleShape2D_knx4t")
@@ -333,30 +332,17 @@ position = Vector2(0, -10)
 [node name="MouseMom" parent="World" instance=ExtResource("6_knx4t")]
 position = Vector2(-9, -24)
 
-[node name="Counter" type="Area2D" parent="World"]
-position = Vector2(-8, 24)
-script = ExtResource("7_u8f0e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Counter"]
-shape = SubResource("RectangleShape2D_u8f0e")
-
-[node name="Sprite2D" type="Sprite2D" parent="World/Counter"]
-texture = ExtResource("8_6v5ol")
-
-[node name="HintLabel" type="Label" parent="World/Counter"]
-visible = false
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 26.0
-offset_bottom = -7.0
-text = "(E) 櫃台"
-
-[node name="ItemSprite" type="Sprite2D" parent="World/Counter"]
-
 [node name="Grill" parent="World" instance=ExtResource("9_rrx0g")]
 
 [node name="Warehouse" parent="World" instance=ExtResource("10_ereok")]
 position = Vector2(41, -31)
+
+[node name="ChoppingBoard" parent="World" instance=ExtResource("11_jnw8d")]
+position = Vector2(17, 24)
+metadata/_edit_group_ = true
+
+[node name="Counter" parent="World" instance=ExtResource("11_qyisx")]
+position = Vector2(-8, 25)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -384,6 +370,3 @@ offset_top = 198.0
 offset_right = 629.0
 offset_bottom = 294.0
 metadata/_edit_group_ = true
-
-[connection signal="body_entered" from="World/Counter" to="World/Counter" method="_on_body_entered"]
-[connection signal="body_exited" from="World/Counter" to="World/Counter" method="_on_body_exited"]

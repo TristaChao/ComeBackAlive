@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://t66uvcef5qh7" path="res://images/assets/tiles/tile_199.png" id="1_vudxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25wl0"]
+size = Vector2(12, 12)
 
 [node name="Warehouse" type="Area2D"]
 script = ExtResource("1_25wl0")
@@ -12,6 +13,7 @@ script = ExtResource("1_25wl0")
 texture = ExtResource("1_vudxo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_25wl0")
 
 [node name="HintLabel" type="Label" parent="."]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgfumgrh8oxla"]
+
+[ext_resource type="Script" uid="uid://brli2un8f6ngn" path="res://scripts/Counter.gd" id="1_jw0do"]
+[ext_resource type="Texture2D" uid="uid://bar7uoag4p508" path="res://images/assets/tiles/tile_191.png" id="2_3jo6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a7xg"]
+size = Vector2(13, 14)
+
+[node name="Counter" type="Area2D"]
+script = ExtResource("1_jw0do")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3jo6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5a7xg")
+
+[node name="HintLabel" type="Label" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = -7.0
+text = "(E) 櫃台"
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
