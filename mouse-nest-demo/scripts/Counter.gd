@@ -10,7 +10,7 @@ func _ready():
 	item_sprite.visible = false # Hide item sprite initially
 	
 	# Start with one piece of raw beef on the counter.
-	var initial_item_id = "beef"
+	var initial_item_id = "onion"
 	item_on_counter = ItemDatabase.create_item(initial_item_id)
 	update_item_visual() # Show the initial beef
 

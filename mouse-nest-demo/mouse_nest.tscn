@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c5htt0ecwvy64"]
+[gd_scene load_steps=24 format=3 uid="uid://c5htt0ecwvy64"]
 
 [ext_resource type="Script" uid="uid://cm5ekvsndxtom" path="res://scripts/Player.gd" id="1_qv1lf"]
 [ext_resource type="Texture2D" uid="uid://qjn2dskvious" path="res://images/idle.png" id="2_0f15v"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dyr2hallhto3c" path="res://UI/pouch_screen.tscn" id="11_28t7s"]
 [ext_resource type="PackedScene" uid="uid://b4imn608axt4e" path="res://ChoppingBoard.tscn" id="11_jnw8d"]
 [ext_resource type="PackedScene" uid="uid://cgfumgrh8oxla" path="res://Counter.tscn" id="11_qyisx"]
+[ext_resource type="PackedScene" uid="uid://b376jn2p5vv3s" path="res://Stove.tscn" id="11_w8f45"]
 [ext_resource type="Script" uid="uid://seo04td62qeg" path="res://scripts/PouchScreen.gd" id="12_bbtb4"]
 [ext_resource type="PackedScene" uid="uid://diqg4gcr1w0pw" path="res://UI/WarehouseScreen.tscn" id="14_jnw8d"]
 
@@ -343,6 +344,9 @@ metadata/_edit_group_ = true
 
 [node name="Counter" parent="World" instance=ExtResource("11_qyisx")]
 position = Vector2(-8, 25)
+
+[node name="Stove" parent="World" instance=ExtResource("11_w8f45")]
+position = Vector2(-8, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

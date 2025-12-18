@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://b376jn2p5vv3s"]
+
+[ext_resource type="Texture2D" uid="uid://do1j6rqxb6n00" path="res://images/assets/tiles/tile_213_transparent.png" id="1_e6wu2"]
+[ext_resource type="Script" uid="uid://o600lq38wv6g" path="res://scripts/Stove.gd" id="1_lyfjj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lyfjj"]
+
+[node name="Stove" type="Area2D"]
+script = ExtResource("1_lyfjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e6wu2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_lyfjj")
+
+[node name="HintLabel" type="Label" parent="."]
+visible = false
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 26.0
+offset_bottom = -1.0
+text = "(E)砧板"
+
+[node name="CookTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -33.0
+offset_top = -42.0
+offset_right = 34.0
+offset_bottom = -15.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="CookTimer" to="." method="_on_cook_timer_timeout"]
