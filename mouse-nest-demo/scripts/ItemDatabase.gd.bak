@@ -9,7 +9,6 @@ const DATA = {
 	"water": { "display_name": "水", "texture_path": "res://images/assets/food/16/tile_50.png", "is_edible": false, "course": "食材" },
 	"mushroom": { "display_name": "蘑菇", "texture_path": "res://images/items/mushroom.png", "is_edible": false, "course": "食材" },
 	"potato": { "display_name": "馬鈴薯", "texture_path": "res://images/items/potato.png", "is_edible": false, "course": "食材" },
-	"carrot": { "display_name": "胡蘿蔔", "texture_path": "res://images/assets/food/Free_pixel_food_16x16/Icons/vegetable_carrot.png", "is_edible": true, "course": "食材" },
 	
 	# --- Tools & Containers (as items) ---
 	"plate": { "display_name": "盤子", "texture_path": "res://images/items/plate.png", "is_edible": false, "course": "工具" },
@@ -27,9 +26,9 @@ const DATA = {
 
 	# --- Cooked & Final Products ---
 	"cooked_beef": { "display_name": "烤牛排", "texture_path": "res://images/items/cooked_beef.png", "is_edible": false, "course": "主餐", "cuisine": "義式" },
-	"plated_cooked_beef": { "display_name": "盤裝烤牛排", "texture_path": "res://...", "is_edible": true, "course": "主餐", "cuisine": "義式" },
+	"plated_cooked_beef": { "display_name": "盤裝烤牛排", "texture_path": "res://images/items/plated_cooked_beef.png", "is_edible": true, "course": "主餐", "cuisine": "義式" },
+	"mushroom_sauce_steak": { "display_name": "蘑菇醬汁牛排", "texture_path": "res://images/items/mushroom_sauce_steak.png", "is_edible": false, "course": "主餐", "cuisine": "義式" },
 	"plated_mushroom_sauce_steak": { "display_name": "盤裝蘑菇醬汁牛排", "texture_path": "res://...", "is_edible": true, "course": "主餐", "cuisine": "義式" },
-	"plated_tomato_sauce_steak": { "display_name": "盤裝番茄醬汁牛排", "texture_path": "res://...", "is_edible": true, "course": "主餐", "cuisine": "義式" },
 	"burnt_item": { "display_name": "燒焦的東西", "texture_path": "res://images/assets/food/16/tile_182.png", "is_edible": false, "course": "垃圾" }
 }
 
@@ -49,20 +48,16 @@ const STOVE_RECIPES = {
 
 const GRILL_RECIPES = { "beef": { "result": "cooked_beef", "time": 3.0, "burnt_result": "burnt_item" } }
 
-# The RAW combination recipes. You can write keys in any order you want.
 const _RAW_COMBINATION_RECIPES = {
 	"cooked_beef|plate": "plated_cooked_beef",
 	"mushroom|skewer": "mushroom_skewer",
-	"plated_cooked_beef|mushroom_sauce": "plated_mushroom_sauce_steak",
-	"plated_cooked_beef|tomato_sauce": "plated_tomato_sauce_steak"
+	"plated_cooked_beef|mushroom_sauce": "plated_mushroom_sauce_steak"
 }
 
-# This dictionary will be populated at runtime with canonical (sorted) keys.
 var combination_recipes: Dictionary = {}
 
 
 func _ready():
-	# Pre-process the combination recipes to create canonical keys.
 	for raw_key in _RAW_COMBINATION_RECIPES:
 		var ingredients = raw_key.split("|")
 		ingredients.sort()

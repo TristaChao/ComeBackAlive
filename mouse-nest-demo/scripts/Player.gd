@@ -2,13 +2,16 @@ class_name Player
 extends CharacterBody2D
 
 @onready var held_item_sprite := $HeldItemSprite # Reference to the sprite above the player
-@onready var pouch_screen: PouchScreen = get_node("/root/MouseNest/UI/PouchScreen") # Reference to the PouchScreen UI node
+var pouch_screen: PouchScreen = null # Reference will be set safely in _ready
 var held_item: ItemData = null
 
 @export var speed := 120
 
 func _ready():
 	held_item_sprite.visible = false # Hide the sprite initially
+	# Safely get the node reference only if it exists in the current scene tree
+	if has_node("/root/MouseNest/UI/PouchScreen"):
+		pouch_screen = get_node("/root/MouseNest/UI/PouchScreen")
 	print("Pouch Screen 參考：", pouch_screen)
 
 func _physics_process(delta):
@@ -57,10 +60,12 @@ func _input(event):
 			# If pouch is open, X no longer closes it. Escape will.
 			pass 
 		elif GameState.state == GameState.State.FREE_MOVE:
-			pouch_screen.open_pouch()
+			if pouch_screen != null: # Safely check if the node exists
+				pouch_screen.open_pouch()
 	elif event.is_action_pressed("ui_cancel"): # Use Escape key (ui_cancel) to close pouch
 		if GameState.state == GameState.State.POUCH_OPEN:
-			pouch_screen.close_pouch()
+			if pouch_screen != null: # Safely check if the node exists
+				pouch_screen.close_pouch()
 		
 # --- Item Interaction Functions ---
 
