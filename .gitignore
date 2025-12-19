@@ -1,16 +1,3 @@
-/screenshots/*
-/screenshots/DialogueBox.gd
-/screenshots/GameState.gd
-/screenshots/grill.gd
-/screenshots/ItemData.gd
-/screenshots/MouseMom.gd
-/screenshots/Player.gd
-/screenshots/螢幕擷取畫面 2025-12-17 152246.png
-/screenshots/螢幕擷取畫面 2025-12-17 171550.png
-/screenshots/螢幕擷取畫面 2025-12-17 174357.png
-/screenshots/螢幕擷取畫面 2025-12-17 175028.png
-/screenshots/螢幕擷取畫面 2025-12-17 175454.png
-/mouse_home_demo_plan.md.bak
 /mouse-nest-demo/images/assets/food/Fastfood icons/Separated files/1x upscale/BBQ.png
 /mouse-nest-demo/images/assets/food/Fastfood icons/Separated files/1x upscale/BBQ.png.import
 /mouse-nest-demo/images/assets/food/Fastfood icons/Separated files/1x upscale/Bowl1.png
@@ -5088,7 +5075,6 @@
 /mouse-nest-demo/images/assets/tiles/skewer.png.import
 /mouse-nest-demo/images/assets/tiles/tile_213_transparent.png
 /mouse-nest-demo/images/assets/tiles/tile_213_transparent.png.import
-/mouse-nest-demo/images/assets/tiles/tile_213.png
 /mouse-nest-demo/images/items/beef.png
 /mouse-nest-demo/images/items/beef.png.import
 /mouse-nest-demo/images/items/cooked_beef.png
@@ -5122,7 +5108,23 @@
 /mouse-nest-demo/images/items/tomato.png
 /mouse-nest-demo/images/items/tomato.png.import
 /mouse-nest-demo/Test.tscn
-/gemini_2025_12_17.txt.bak
-/GEMINI.md
-/mouse-nest-demo/images/assets/tiles/tile_213.png
-/mouse-nest-demo/images/assets/kitchen/Kitchen and more tileset [16x16].zip
+/screenshots/10.png
+/screenshots/11.png
+/screenshots/螢幕擷取畫面 2025-12-18 002256.png
+/screenshots/螢幕擷取畫面 2025-12-18 021612.png
+/screenshots/螢幕擷取畫面 2025-12-18 022817.png
+/screenshots/螢幕擷取畫面 2025-12-18 023936.png
+/screenshots/螢幕擷取畫面 2025-12-18 030641.png
+/screenshots/螢幕擷取畫面 2025-12-18 031515.png
+/screenshots/螢幕擷取畫面 2025-12-18 165633.png
+/screenshots/螢幕擷取畫面 2025-12-18 170052.png
+/screenshots/螢幕擷取畫面 2025-12-19 145718.png
+/screenshots/螢幕擷取畫面 2025-12-19 175205.png
+/screenshots/螢幕擷取畫面 2025-12-19 175758.png
+/screenshots/螢幕擷取畫面 2025-12-19 180220.png
+/screenshots/螢幕擷取畫面 2025-12-19 180753.png
+/screenshots/螢幕擷取畫面 2025-12-19 190011.png
+/screenshots/螢幕擷取畫面 2025-12-19 191342.png
+/screenshots/螢幕擷取畫面 2025-12-19 191456.png
+/screenshots/螢幕擷取畫面 2025-12-19 192223.png
+/mouse-nest-demo/images/*
